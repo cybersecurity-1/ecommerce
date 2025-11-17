@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ecommerce-web
+    env: python
+    plan: free
+    repo: https://github.com/cybersecurity-1/ecommerce
+    branch: main
+    buildCommand: pip install -r project1/website1/requirements.txt
+    startCommand: gunicorn website1.wsgi:application --chdir project1/website1 --bind 0.0.0.0:$PORT
+    healthCheckPath: /
+    envVars:
+      - key: DEBUG
+        value: 'False'
+      - key: SECRET_KEY
+        scope: private
+      - key: ALLOWED_HOSTS
+        value: your-app.onrender.com
+
+databases:
+  - name: ecommerce-db
+    plan: starter
