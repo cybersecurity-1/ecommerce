@@ -5,7 +5,7 @@ services:
     plan: free
     repo: https://github.com/cybersecurity-1/ecommerce
     branch: main
-    buildCommand: pip install -r project1/website1/requirements.txt
+    buildCommand: pip install -r project1/website1/requirements.txt && python project1/website1/manage.py migrate && python project1/website1/manage.py collectstatic --noinput
     startCommand: gunicorn website1.wsgi:application --chdir project1/website1 --bind 0.0.0.0:$PORT
     healthCheckPath: /
     envVars:
