@@ -3,12 +3,15 @@ services:
     name: ecommerce-web
     env: python
     plan: free
+    pythonVersion: 3.10
     repo: https://github.com/cybersecurity-1/ecommerce
     branch: main
-    buildCommand: pip install -r project1/website1/requirements.txt && python project1/website1/manage.py migrate && python project1/website1/manage.py collectstatic --noinput
+    buildCommand: pip install --upgrade pip && pip install dj-database-url psycopg2-binary && pip install -r project1/website1/requirements.txt && python project1/website1/manage.py migrate && python project1/website1/manage.py collectstatic --noinput
     startCommand: gunicorn website1.wsgi:application --chdir project1/website1 --bind 0.0.0.0:$PORT
     healthCheckPath: /
     envVars:
+      - key: PATH
+        value: /opt/render/project/.venv/bin:/usr/local/bin:/usr/bin:/bin:/opt/render/python3.7/bin
       - key: DEBUG
         value: 'False'
       - key: SECRET_KEY
