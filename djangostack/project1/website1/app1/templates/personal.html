@@ -1,0 +1,56 @@
+{% extends 'account0.html' %}
+{% load static %}
+{% block title %}personal{% endblock %}
+
+
+{% block content %}
+ <!-- Main Content -->
+ <main class="main-content">
+    <h1>Personal Information</h1>
+    <p class="info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    {% for x in phonen %}
+    <form action="/personal" method="POST" class="personal-info-form">
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="first-name">Name</label>
+        <input value="{{ x.reg_cname }}" name="name" type="text" id="name" placeholder="">
+      </div>
+      <!-- <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" placeholder="Holland">
+      </div> -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" value="{{ x.reg_cemail }}" name="email" id="email" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone" value="{{x.reg_cphone}}" placeholder="+91">
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" value="{{ x.reg_date }}" name="dob" required id="dob">
+      </div>
+      <div class="form-group gender">
+        <label>Gender</label>
+        <div>
+          <input type="radio" id="male" name="gender" value="male" checked>
+          <label for="male">Male</label>
+        </div>
+        <div>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female">Female</label>
+        </div>
+      </div>
+      <p class="info-message">
+        In order to access some features of the Service, you will have to fill out your account details. You may use it for buying things also for shipping process for more details <a href="#">click here</a>.
+      </p>
+      <div class="form-buttons">
+        <button type="submit" class="save-btn">Save</button>
+        <button type="reset" class="cancel-btn">Cancel</button>
+      </div>
+    </form>
+    {% endfor %}
+ </main>
+
+ {% endblock %}

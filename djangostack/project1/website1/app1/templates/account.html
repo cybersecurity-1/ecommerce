@@ -1,0 +1,293 @@
+{% extends 'masterpage.html' %}
+{% load static %}
+{% block title %}
+account
+{% endblock %}
+{% block content %} 
+    <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head> -->
+<style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+}
+
+.account-page {
+  display: flex;
+  /* height: 100vh; */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background-color: #ffffff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.user-name {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.balance {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.main-content h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.info-text {
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.personal-info-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.gender div {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.gender label {
+  margin-left: 5px;
+}
+
+.info-message {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.info-message a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.info-message a:hover {
+  text-decoration: underline;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.save-btn:hover {
+  background-color: #0056b3;
+}
+
+.cancel-btn {
+  background-color: #ddd;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #bbb;
+}
+.card-img-top{
+  width: 150px;
+  height: 150px;
+}
+.wallet-combo{
+  background-color: rgba(245, 132, 161, 0.822);
+}
+.add-cash{
+  background-color: #ffffffde;
+  padding: 10px;
+  border-radius:5px ;
+}
+
+</style>
+<body>
+  <div class="account-page">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="card " >
+          
+          <div class="card-body text-center">
+            <img src="{% static '' %}" class="card-img-top" alt="...">
+            {% for x in phonen %}
+              <h5 class="card-title">{{ x.reg_cname }}</h5>
+            {% endfor %}
+              <a href="/account?personal" class="btn btn-primary">Edit Profile</a>
+            </div>
+        </div>
+      <nav class="menu">
+        <a href="/account?wallet">My Wallet</a>
+        <a href="/account?rewards">My Rewards</a>
+        <a href="/account?myorders">My Orders</a>
+        <a href="/account?personal">Personal Information</a>
+        <a href="#">Addresses</a>
+        <a href="#">Payment Methods</a>
+        <a href="#">Contact Preferences</a>
+        <a href="#">Social Networks</a>
+        <a href="#">Need Help</a>
+        <a href="/logout">Sign Out</a>
+      </nav>
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+      {% if 'personal' in request.GET %}
+      <h1>Personal Information</h1>
+      <p class="info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      {% for x in phonen %}
+      <form action="/account" method="POST" class="personal-info-form">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="first-name">Name</label>
+          <input value="{{ x.reg_cname }}" name="name" type="text" id="name" placeholder="">
+        </div>
+        <!-- <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" placeholder="Holland">
+        </div> -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" value="{{ x.reg_cemail }}" name="email" id="email" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" id="phone" value="{{x.reg_cphone}}" placeholder="+91">
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" value="{{ x.reg_date }}" name="dob" required id="dob">
+        </div>
+        <div class="form-group gender">
+          <label>Gender</label>
+          <div>
+            <input type="radio" id="male" name="gender" value="male" checked>
+            <label for="male">Male</label>
+          </div>
+          <div>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+          </div>
+        </div>
+        <p class="info-message">
+          In order to access some features of the Service, you will have to fill out your account details. You may use it for buying things also for shipping process for more details <a href="#">click here</a>.
+        </p>
+        <div class="form-buttons">
+          <button type="submit" class="save-btn">Save</button>
+          <button type="reset" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+      {% endfor %}
+      {% elif 'rewards' in request.GET %}
+        <h1>Rewards</h1>
+
+        {% elif 'myorders' in request.GET %}
+        <h1>Orders</h1>
+        {% elif 'wallet' in request.GET %}
+       <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="wallet-combo d-flex justify-content-around">
+             <div class="b-combo pt-2">
+              
+              <h1 style="color: white;"><b>$0</b></h1>
+              <p style="color: white;">Current wallet balance</p>
+             </div>
+             <div class="add-combo">
+              <div class="add-money pt-4">
+                <span class="add-cash fw-bold">+ Add Money to Wallet</span>
+              </div>
+             </div>
+            </div>
+        </div>
+        </div>
+       </div>
+        {% endif %}
+    </main>
+  </div>
+<!-- </body>
+</html> -->
+
+{% endblock %}

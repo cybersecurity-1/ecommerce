@@ -1,0 +1,777 @@
+.container {
+    padding: 16px;
+    background-color: white;
+  }
+
+  /* Full-width input fields */ 
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  /* Overwrite default styles of hr */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+
+  /* Set a style for the submit button */
+  .registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
+  .registerbtn:hover {
+    opacity: 1;
+  }
+
+  /* Add a blue text color to links */
+  a {
+    color: dodgerblue;
+  }
+
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+  .heart-icon
+ {
+    font-size: 24px; /* Adjust this value to match the size of the heart icon */
+}
+.cart-icon{
+  font-size: 30px;
+}
+
+.cart-container .badge {
+    font-size: 12px; /* Optional: Adjust the size of the badge if necessary */
+}
+
+  /* ....................................login................................... */
+
+#linput[type=text], #linput[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#lbtn{
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+#lbtn:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+
+
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+#inbox10{
+  border: 2px solid orange ;
+
+}
+
+.profile-pic{
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+}
+.div1 a{
+text-decoration: none;
+color: #e20cc6;
+font-weight: bold;
+
+}
+/* ...................................index....................................... */
+.indexbox1 {
+  width: 100%;
+  /* height: 400px; */
+  background-color: rgb(255, 255, 255);
+
+}
+.sec2{
+  background-color: rgb(240, 232, 232);
+}
+.items1{
+  width: 100%;
+  border: 1px solid ;
+  border-color: grey;
+  margin-bottom: 10px;
+}
+
+/* ...................................masterpage.................................. */
+ /* #navbar {
+  overflow: hidden;
+
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #050505;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}  */
+
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    padding-left: 300px;
+  }
+  .form-control{
+    min-width: 100%;
+    }
+    #dropdown-menu2{
+      width: 280px !important;
+      padding: 20px !important;
+      left: calc(-50px - 50px );
+    }
+    .navbar-nav{
+       align-items: center;
+    }
+    /* .dropdown:hover .dropdown-menu {
+      display: block;
+      position: relative;
+      left: 0;
+      top: 10;
+    } */
+    .sec4{
+      margin-top: 50px;
+    }
+    .green-div{
+      width: 254px;
+    padding: 12px;
+    background-color: #3ee9aa;
+    
+    }
+    .badge {
+      position: absolute !important;
+      top: -3px !important;
+      right: -10px ;
+      
+      padding: 5px 10px;
+      border-radius: 50%;
+      background-color: rgb(223, 209, 209);
+      color: rgb(221, 35, 35);
+      font-size: 12px;
+  }
+   
+   
+
+
+}
+/* nav{
+  padding: 15px !important;
+} */
+.navbar input:focus {
+  outline: none; /* Removes the default focus outline */
+  box-shadow: none; /* Removes the box-shadow (which causes the colored border) */
+  border-color: transparent; /* Optional: Makes the border color transparent */
+}
+
+
+
+/* .dropdown  img{
+  width: 15% !important;
+} */
+.dropdown-toggle::after{
+  vertical-align: 0px !important;
+}
+.navbar-nav li ul{
+  padding-left: 0px;
+}
+
+.navbar-nav li ul li{
+  padding-left: 0px;
+}
+
+#wel{
+  font-size: small;
+}
+.btn-1{
+  background-color: transparent !important;
+}
+.btn-1 a{
+  text-decoration: none;
+  color: black;
+}
+.logout{
+  background-color: rgb(255, 63, 63);
+}
+.logout a{
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+.Wishlist i{
+ font-size: 2rem;
+ color: black;
+}
+#dropdown-menu2{
+  width: 280px !important;
+  padding: 20px !important;
+
+  left: calc(-50px - 50px );
+}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+  padding-left: 0;
+}
+.navbar-nav li{
+  margin-right: 25px;
+}
+.heart-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  color: grey; /* Default color */
+}
+
+.heart-icon.filled {
+  color: red; /* Color when filled */
+}
+
+/* ..............................media 430px ...................... */
+swiper-container {
+      width: 100%;
+      height: 100%;
+     }
+
+    swiper-slide {
+      /* width: 25% !important; */
+      /* border: 1px solid; */
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      height: 80%;
+    }
+    /* .boder{
+      border: 1px solid;
+      padding: 10px;
+    } */
+    .cart-container {
+      position: relative;
+      display: inline-block;
+  }
+  .badge {
+    position: absolute;
+    top: -3px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+}
+
+/* ..................................................chatgpt....................................................... */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  /* border: 2px solid #ccc; */
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+.image-box {
+  /* width: 50%;
+  height: 50%; */
+  border: 2px solid #888; /* Border around each image */
+  padding: 10px; /* Padding inside the border */
+  margin-right: 10px; /* Space between each image */
+  box-sizing: border-box;
+}
+
+.image-box img {
+  /* width: 100%;
+  height: 100%; */
+  object-fit: contain; /* Ensures the image covers the entire space without stretching */
+  padding: 2rem;
+  height: 200px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 3px; /* Height of the horizontal scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+.p-h{
+  text-align: center;
+  margin-top: 1%;
+}
+
+/* ............................................sec4....................................... */
+.newproducts{
+  padding-bottom:10px ;
+}
+.sec4-inbox1{
+  position: relative;
+}
+.sec4-image-name{
+  position: absolute;
+  top: 0px;
+padding: 20px;
+font-weight: bolder;
+}
+.sec4-image-name h1{
+  font-size: 3.5vw;
+}
+.sec4-img1{
+  width: 100%;
+  object-fit: cover;
+
+}
+.green-div{
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+}
+.green-div-link1{
+  /* font-stretch: calc(50% -50%); */
+  font-weight: 600;
+  color: black;
+  /* font-weight: bolder; */
+  text-decoration: none;
+  width: 0;
+  left: 0;
+  padding-bottom: 0;
+  transition: all 336ms cubic-bezier(0.48,0.04,0.52,0.96) 200ms;
+}
+
+.green-div-link1,.new-button--link::after {
+    top: auto;
+    bottom: 0;
+    opacity: 1;
+    border-bottom: 1px solid #000;
+    transform: none;
+    border-radius: 0;
+}
+.sec4-inbox2{
+  padding: 10px;
+}
+.sec4-img2 {
+  /* padding: 0px 100px; */
+  text-align: center;
+}
+.sec4-img2 img{
+height: 240px;
+padding: 20px 50px !important;
+
+}
+
+
+.sec4-product-heading{
+  z-index: 1;
+  position: relative;
+  white-space: nowrap;
+  color: rgba(0,0,0,0.95);
+}
+.sec4-inbox2-downbox{
+  padding: 10px;
+  background-color: rgb(209, 177, 188);
+}
+.sec5-inbox1 img{
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  object-fit: cover;
+}
+.sec5-inbox1:hover img{
+  transform: scale(1.1);
+}
+.sec5-inbox1{
+  padding: 8px;
+  overflow: hidden;
+}
+
+.ex-box{
+  background-color: rgba(209, 177, 188, 0.418);
+  padding: 10px;
+  margin-top: 8px;
+  position: relative;
+}
+/* .ex-box i{
+
+} */
+.sec5-inbox1 p{
+  position: relative;
+}
+.first-paragraph {
+  margin-bottom: 5px; /* Adjust this value as needed */
+}
+
+.second-paragraph {
+  margin-top: 0; /* Remove the default margin if necessary */
+}
+
+
+/* ...................................................cart............................................ */
+.icon-hover-primary:hover {
+  border-color: #3b71ca !important;
+  background-color: white !important;
+}
+
+.icon-hover-primary:hover i {
+  color: #3b71ca !important;
+}
+.icon-hover-danger:hover {
+  border-color: #dc4c64 !important;
+  background-color: white !important;
+}
+
+.icon-hover-danger:hover i {
+  color: #dc4c64 !important;
+}
+/* ....................................................footer........................................... */
+.footer {
+    background-color:#fa6776ec;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 250px;
+}
+
+.footer-section h2 {
+    color: #e41235;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.socials a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.footer-bottom {
+    padding: 10px;
+    background-color: #1a252f;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* ..........................................checkout............................ */
+.text-font{
+font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+font-weight: 700;
+letter-spacing: .156rem;
+font-size: 1.125rem;
+}
+.text-price{
+padding: 0 .625rem;
+font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+font-style: normal;
+font-size: .75rem;
+font-weight: 700;
+line-height: .813rem;
+letter-spacing: 1.6px;
+}
+.text-descriptions{
+font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+font-style: normal;
+font-size: .75rem;
+font-weight: 400;
+line-height: 1.125rem;
+margin: .313rem 0 .938rem;
+padding: 0 .625rem;
+}
+.button-color{
+color: #4e4e4e ;
+border-color: #4e4e4e ;
+}
+.button-order{
+/* font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+font-style: normal;
+font-size: .75rem;
+font-weight: 700; */
+background-color: hsl(90, 40%, 50%);
+color: white;
+width: 30% !important;
+}
+.multi-row{
+  /* background-color: coral; */
+  width: 100%;
+  height: 200px;
+  /* border: 1px solid black; */
+  overflow: scroll;
+    /* overflow-x: scroll; */
+  overflow-x: hidden;
+}
+
+
+/* ..............................payment..........................
+*/@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+  
+  /* .......................................account.................................... */
+  
+  .account-page {
+     display: flex;
+    /* height: 100vh; */
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 280px;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .profile {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .user-name {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .balance {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .menu a:hover,
+  .menu a.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 40px;
+  }
+  
+  .main-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .info-text {
+    margin-bottom: 30px;
+    color: #666;
+  }
+  
+  .personal-info-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .gender div {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .gender label {
+    margin-left: 5px;
+  }
+  
+  .info-message {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .info-message a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .info-message a:hover {
+    text-decoration: underline;
+  }
+  
+  .form-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .save-btn,
+  .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-btn {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .save-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .cancel-btn {
+    background-color: #ddd;
+    color: #333;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #bbb;
+  }
+  .card-img-top{
+    width: 150px;
+    height: 150px;
+  }
+  .wallet-combo{
+    background-color: rgba(245, 132, 161, 0.822);
+  }
+  .add-cash{
+    background-color: #ffffffde;
+    padding: 10px;
+    border-radius:5px ;
+  }
+  

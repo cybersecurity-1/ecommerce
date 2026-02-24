@@ -1,0 +1,78 @@
+{% extends 'masterpage.html' %}
+{% load static %}
+{% block title %}
+product
+{% endblock %}
+{% block content %} 
+<style>
+  .wishlistIcon {
+  color: grey; /* Default color */
+  cursor: pointer;
+}
+
+.wishlistIcon.active {
+  color: red; /* Color when added to the wishlist */
+  /* background-color: red; */
+
+}
+
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="pro1">PRODUCTS</div>
+    {% for x in products %}
+    <!-- <div class="col-sm-4">
+        <div id="inbox10">
+            <img src="/media/{{x.pro_image}}" alt="apple" width="200px" height="250px">
+            <div class="span1">
+                <span> {{x.pro_name}}</span>
+            </div>
+            <div class="span1">
+                <span>{{x.pro_price}} </span>
+            </div>
+             <a href="/addtocart/{{x.id}}">add to cart</a>
+        </div>
+    </div> -->
+    <div class="col-sm-4 mb-5">
+
+      <div class="card p-3" >
+        <img class="card-img-top" src="/media/{{x.pro_image}}" alt="Card image" >
+        <div class="span1 mt-2">
+          <span> {{x.pro_name}}</span>
+        </div>
+        <div class="span1">
+          <span>{{x.pro_price}} </span>
+        </div>
+
+       <div class="add-wish d-flex justify-content-between">
+        <a href="/addtocart/{{x.id}}" class="btn btn-primary" style="width: 150px;">Add to cart</a>
+        <div class="wishlist text-center" style="width: 50px;">
+          {% if x.id in pid_lists %}
+        <a href="/product?del={{x.id}}">
+          <i class="bi bi-heart-fill"></i>
+        </a>
+          {% else %}
+        <a href="/add_to_wishlist/{{ x.id }}"> 
+                  <i class="bi bi-heart"></i>
+        </a> 
+          {% endif %}
+        </div>
+       </div>
+      </div>
+      </div>
+   
+    {% endfor %}
+  </div>
+  
+</div>
+
+<script>
+  document.getElementsByClassName("wishlistIcon").addEventListener("click", function () {
+  this.classList.toggle("active");
+  // You can also add a call here to update the wishlist in the backend if needed
+});
+
+</script>
+    
+{% endblock %}

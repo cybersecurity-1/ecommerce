@@ -1,0 +1,542 @@
+{% extends 'masterpage.html' %}
+{% load static %}
+{% block title %}checkout page{% endblock %}
+{% block content %}
+
+<style>
+    .navcheck{
+        display: none;
+    }
+    .lname1{
+        font-size: 10px;
+    }
+    .lid{
+        font-size: 13px;
+        padding-top: 4px;
+    }
+     .toleft{float:left;}
+     .ccv{width:50px; margin-top:-5px; font-size:15px;}
+     .input{font-family: 'Work Sans', sans-serif; background:transparent; border:none; border-bottom:1px solid transparent; color:#dbdce0; transition: border-bottom .4s;}
+     input:focus{border-bottom:1px solid #1abc9c; outline:none;}
+     .cardnumber{display:block; font-size:20px; margin-bottom:8px; }
+     .card-container {
+      background-color: #2c2c2c;
+      color: white;
+      border-radius: 15px;
+      padding: 20px;
+      max-width:  365px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+    .visa-logo {
+      width: 60px;
+      margin-bottom: 20px;
+    }
+    h3, h5 {
+      margin: 0;
+    }
+    .card-number {
+      letter-spacing: 3px;
+      font-size: 1.2rem;
+    }
+    .card-details {
+      margin-top: 10px;
+    }
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      right: -25px;
+      background-color: #00d2ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-50%);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .arrow-btn i {
+      font-size: 22px;
+      color: white;
+    }
+    /* Media query for responsiveness */
+    @media (max-width: 576px) {
+      .card-container {
+        width: 100%;
+      }
+
+    }
+    .btn {
+  flex: 1 1 auto;
+  /* margin: 10px;
+  padding: 30px; */
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+ }
+
+/* Demo Stuff End -> */
+
+/* <- Magic Stuff Start */
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+.btn-2 {
+  background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+   
+</style>
+  <h2 class="pro1">checkout</h2><br><br><br>
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-sm-9" >
+            {% for x in order %}
+            <div class="row my-2" style="background-color: rgb(255,255,255,0.2); border: 1px solid grey; padding: 5px;">
+            <div class="col-sm-4">
+                <div class="inbox1" >
+                    <img src="/media/{{x.order_proimage}}" alt="apple" height="100px">
+                </div>
+            </div>
+            <div class="col-sm-4">
+
+                <div class="span1">
+                    <span >{{x.order_proname}}</span>
+                    <br>
+                 
+                </div>
+                <div class="span1" style="padding-top: 10px;">
+                    <span >price = {{x.order_proprice}}</span>
+                    <br>
+                    
+                </div>
+                <div class="span1" style="padding-top: 10px;">
+                    <span >
+                        quantity: {{x.order_proqty}}
+                        <br>
+                  
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="span1">
+                    <span>{{x.order_proamount}}</span>
+                </div>
+                <br>
+            </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-sm-3">
+            <div style="background-color: lightgrey; min-height: 300px; padding: 15px;">
+
+                {% if co == 0 %}
+             add address 
+                 <form action="/checkout" method="post">
+                    {% csrf_token %}
+                    <label for=""> ENTER ADDRESS:</label>
+                    <textarea name="div_adrs" id="" style="width: 100%;height: 100px;"></textarea>
+                    <label for="">choose payment type</label>
+                    <select name="pay_type" id="">
+                        <option value="cod">COD</option>
+                        <option value="online">online</option>
+                    </select>
+
+                    <button class="btn btn-success mt-3">Submit</button>
+                 </form>
+                 {% elif co == 1 %}
+
+               summary
+
+                Total Amount: {{tot}}
+                <br><br>
+                Shipping: {{shp}}
+                <br><br>
+                GST: {{gst}}
+                <br>
+                <hr>
+                <br>
+                Total:{{gtot}}
+                <br><br>
+                <a href="/confirmorder">
+                    <button class="btn btn-success">Corfirm order</button>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>   -->
+
+
+
+
+
+<div class="container ">
+
+    <!--Section: Design Block-->
+    <section>
+  
+      <div class="row">
+        <div class="col-md-8">
+          <!-- <div class="card mb-4">
+  
+  
+            <div class="card-body">
+              <p class="text-uppercase h4 text-font">Delivery Country:</p>
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="https://mdbcdn.b-cdn.net/img/Others/extended-example/usa2.webp"
+                    class="rounded-circle me-2" style="width: 35px;" alt="USA" />
+                </div>
+                <div class="col-md-8">
+                  <select data-mdb-select-init>
+                    <option value="1">United States</option>
+                    <option value="2">Spain</option>
+                    <option value="3">Poland</option>
+                    <option value="4">Italy</option>
+                    <option value="5">Greece</option>
+                    <option value="6">Germany</option>
+                    <option value="7">Croatia</option>
+                    <option value="8">Sweden</option>
+                  </select>
+                </div>
+              </div>
+  
+  
+  
+  
+            </div>
+          </div> -->
+          <!-- <div class="card mb-4 accordion" id="accordionExample">
+            <div class="card body accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <div  data-mdb-collapse-init class="accordion-button collapsed text-uppercase text-font h4" type="button"
+                   data-mdb-target="#collapseOne" aria-expanded="false"
+                  aria-controls="collapseOne">
+                  Promo/Student Code or Vouchers
+                </div>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div data-mdb-input-init class="form-outline d-flex">
+                    <input type="text" id="form1" class="form-control" />
+                    <label class="form-label" for="form1">Enter code</label>
+                  </div>
+                </div>
+              </div>
+  
+  
+  
+            </div>
+          </div> -->
+  
+          <div class="card mb-4">
+            <div class="card-body">
+              <p class="text-uppercase fw-bold mb-3 text-font">Email address</p>
+              <div class="row">
+                <div class="col-md-4">
+                   <!-- Number input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  {% if phonen %}
+                    {% for x in phonen %}
+                      <label class="form-label" for="form11Example6">phonenumber:{{ x.reg_cphone }}</label>
+                    {% endfor %}
+                  {% else %}
+                    <label class="form-label" for="form11Example6">No phone number registered.</label>
+                  {% endif %}
+                  <!-- <input type="" id="form11Example6" class="form-control" /> -->
+                </div>
+                </div>
+                <div class="col-md-7">
+                  <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn0 btn-outline-dark float-end button-color "
+                    data-mdb-ripple-color="dark">
+                    Change
+                  </button>
+                </div>
+              </div>
+  
+  
+            </div>
+            
+              
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <div class="card mb-4">
+                {% if co == 0 %}
+                <div class="card-header py-3">
+                  <h5 class="mb-0 text-font text-uppercase">Delivery address</h5>
+                </div>
+                <div class="card-body">
+                  <form action="/checkout" id="myForm" method="post">
+                    {% csrf_token %}
+                    <div class="row mb-4">
+                        <div class="col">
+                          <input type="hidden" name="div_mobile" value="{{ phonen.0.reg_cphone }}">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="name">First name</label>
+                                <input type="text" id="name" name="div_name" class="form-control" />
+                                <p id="nameError" style="color:red"></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="lastName">Last name</label>
+                                <input type="text" id="lastName" name="div_lname" class="form-control" />
+                                <p id="lastNameError" style="color:red"></p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="address">Address</label>
+                        <input type="text" id="address" name="div_adrs" class="form-control" />
+                        <p id="addressError" style="color:red"></p>
+                    </div>
+            
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="zip">Zipcode</label>
+                                <input type="text" id="zip" name="div_zip" class="form-control" />
+                                <p id="zipError" style="color:red"></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="city">City</label>
+                                <input type="text" id="city" name="div_city" class="form-control" />
+                                <p id="cityError" style="color:red"></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="state">State</label>
+                                <input type="text" id="state" name="div_state" class="form-control" />
+                                <p id="stateError" style="color:red"></p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="text-center">
+                      <button type="submit" class="btn button-order col-md-6" disabled>Continue</button>
+                    </div>
+                    
+                </form>
+                </div>
+
+                {% elif co == 1 %}
+                
+              
+               
+               <div class="container d-flex">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div  data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1" >
+                      <p  onclick="arrow1()" class="fw-bold" ><span>1.</span> Card Payment <span><i id="demo1" class=" bi bi-chevron-right" ></i></span></p>
+                  </div>
+              
+                  <div class="collapse" id="collapseExample1" style="border: 1px solid grey;">
+                    <div class="card-container text-start">
+                      <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" alt="Visa Logo" class="visa-logo">
+                      <div class="card-details">
+                        <p class="mb-1 lname1">Card number:</p>
+                        <input class="input cardnumber " placeholder=" 5678 9101 1121 7044">
+                      <div class="combine d-flex justify-content-between">
+                          <div class="f-name">
+                              <p class="mb-1 lname1">Name:</p>
+                              <input class="input cardnumber" placeholder="Moh Fahad.. ">
+                           </div>
+                           <div class="f-id mt-3 " style="position: relative; left: -20px;">
+                            <label class=" lid mb-1 toleft">ccv:</label>
+                            <input class="input toleft ccv pt-2 " placeholder="321">
+                      </div>
+                  
+                       </div>
+                      </div>
+                      <div class="arrow-btn">
+                        <a href="/confirmorder">
+      
+                          <i  class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                   <br>
+                  <div  data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2" >
+                    <p  onclick="arrow2()" class="fw-bold"   ><span>2.</span> Cash on Delevery <span><i id="demo2" class=" bi bi-chevron-right" ></i></span></p>
+                </div>
+                <div class="collapse" id="collapseExample2" >
+
+                  <a href="/confirmorder" class="btn btn-2 ">Place Order</a> 
+                </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+               
+                {% endif %}
+      
+              </div>
+              <!-- ............................................................. -->
+             
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-md-4 mb-4 position-static">
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <h5 class="mb-0 text-font" id="cart_count">{{ request.session.cart_count|default:0 }} items  
+               <a href="/cart">
+
+                 <span class="float-end mt-1"style="font-size: 13px ;">Edit</span></h5>
+               </a>
+            </div>
+            <div class="card-body">
+                <div class="multi-row">
+                {% for x in order %}
+                <div class="row" style="margin: 10px 0px;">
+                    <div class="col-md-4">
+                      <img src="/media/{{x.order_proimage}}"
+                        class="rounded-3" style="width: 100px;" alt="Blue Jeans Jacket" />
+                    </div>
+                    <div class="col-md-6 ms-3">
+                      <p class="mb-0 text-descriptions">Denim jacket </p>
+                      <span class="mb-0 text-price">{{x.order_proprice}}</span>   
+                      <span class="text-descriptions fw-bold">Black</span> 
+                      <!-- <span  class="text-descriptions fw-bold">UK 8</span> -->
+                      <p class="text-descriptions mt-0">Qty:<span class="text-descriptions fw-bold">{{x.order_proqty}}</span>
+                      </p>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              <div class="card-footer mt-4">
+                <ul class="list-group list-group-flush">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-muted">
+                    Subtotal
+                    <span>{{tot}}</span>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-muted">
+                    Shipping
+                    <span>{{shp}}</span>
+                  </li>
+                  <!-- <li
+                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-muted">
+                    Gst
+                    <span>{{gst}}</span>
+                  </li> -->
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center px-0 fw-bold text-uppercase">
+                    Total to pay
+                    <span>{{gtot}}</span>
+                  </li>
+                </ul>
+              </div>
+  
+  
+            </div>
+          
+          </div>
+        </div>
+  
+        
+        
+
+       
+  
+  
+  
+  
+      </div>
+  
+    </section>
+    <!--Section: Design Block-->
+  
+  </div>
+  <script>
+  // Validate on input and on submit
+  document.getElementById("myForm").addEventListener("input", validateForm);
+  document.getElementById("myForm").addEventListener("submit", function(event) {
+    if (!validateForm()) {
+      event.preventDefault(); // Prevent form submission if validation fails
+    }
+  });
+
+  function validateForm() {
+    let formIsValid = true;
+
+    formIsValid = formIsValid && validateField("name", "Please enter a first name.", "nameError");
+formIsValid = formIsValid && validateField("lastName", "Please enter a last name.", "lastNameError");
+formIsValid = formIsValid && validateField("address", "Please enter an address.", "addressError");
+formIsValid = formIsValid && validateField("zip", "Please enter a zip code.", "zipError");
+formIsValid = formIsValid && validateField("city", "Please enter a city.", "cityError");
+formIsValid = formIsValid && validateField("state", "Please enter a state.", "stateError");
+
+    // Enable or disable the continue button based on form validation
+    document.querySelector(".btn.button-order").disabled = !formIsValid;
+
+    return formIsValid; // Return the validation result
+  }
+
+  function validateField(fieldId, errorMessage, errorElementId) {
+    const field = document.getElementById(fieldId);
+    const errorElement = document.getElementById(errorElementId);
+    
+    if (field.value.trim() === "") {
+      errorElement.textContent = errorMessage;
+      return false;
+    } else {
+      errorElement.textContent = "";
+      return true;
+    }
+  }
+
+  function arrow1() {
+    // Get the arrow icon element
+    var x = document.getElementById("demo1");
+
+    // Toggle between right and down arrow
+    if (x.classList.contains("bi-chevron-right")) {
+      x.classList.remove("bi-chevron-right");
+      x.classList.add("bi-chevron-down");
+    } else {
+      x.classList.remove("bi-chevron-down");
+      x.classList.add("bi-chevron-right");
+    }
+  }
+  function arrow2() {
+    // Get the arrow icon element
+    var x = document.getElementById("demo2");
+
+    // Toggle between right and down arrow
+    if (x.classList.contains("bi-chevron-right")) {
+      x.classList.remove("bi-chevron-right");
+      x.classList.add("bi-chevron-down");
+    } else {
+      x.classList.remove("bi-chevron-down");
+      x.classList.add("bi-chevron-right");
+    }
+  }
+</script>
+
+  
+ 
+ 
+{% endblock %}

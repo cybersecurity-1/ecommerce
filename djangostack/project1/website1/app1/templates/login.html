@@ -1,0 +1,49 @@
+{% extends 'masterpage.html' %}
+{% load static %}
+{% block title %}
+loginpage
+{% endblock %}
+{% block content %} 
+<h2>Login Form</h2>
+
+<form action="/login" method="post">
+    {% csrf_token %}
+    <div class="container" id="lcontainer">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3"  >
+
+                
+                <label for="uname"><b>Username</b></label>
+                <input id="linput" type="text" placeholder="Enter Username" name="log_id" required>
+                
+                <label for="psw"><b>Password</b></label>
+                <input id="linput1" type="password" placeholder="Enter Password" name="log_psd" required>
+                
+                <button id="lbtn" type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="lremember"> Remember me
+                </label>
+
+                
+            </div>
+        </div>
+  </div>
+  
+  <div class="container" id="lcontainer" >
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3" style="background-color:#f1f1f1;padding: 10px;">   
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </div>
+</div>
+</form>
+<!-- Add a clear Register link for users who don't have an account -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3 text-center">
+            <p>Don't have an account? <a href="/register" class="btn btn-link">Register here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

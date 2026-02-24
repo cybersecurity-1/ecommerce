@@ -1,0 +1,454 @@
+{% extends 'masterpage.html' %}
+
+{% load static %}
+
+{% block title %}
+    HOME PAGE
+{% endblock %}
+    
+    {% block content %}
+    <style>
+        .p_name a,.p_price a{
+            display: flex;
+            justify-content: center;
+            text-decoration: none;
+    border-bottom: none; /* In case the underline is created with a border */
+    outline: none; /* Remove any outlines */
+    color: black;
+}
+          
+        
+        
+    </style>
+    
+
+    <div class="container-fluid">
+    
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                
+
+                    <!-- Indicators/dots -->
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    </div>
+                    
+                    <!-- The slideshow/carousel -->
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="{% static 'Designer.png'%}" alt="Los Angeles" class="d-block" style="width:100%;">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{% static 'index-img/v29e.png'%}" alt="Chicago" class="d-block" style="width:100%">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{% static 'iphoneb.png'%}" alt="New York" class="d-block" style="width:100%">
+                      </div>
+                    </div>
+                    
+                    <!-- Left and right controls/icons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                      <span class="carousel-control-next-icon"></span>
+                    </button>
+                  </div>
+                  
+                  
+            </div>
+
+
+        </div>
+
+    </div>
+    <!-- <section class="sec2">
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class=" col-sm-4 p-4">
+                    <div class="indexbox1 text-center ">
+                        <h3>Fashion</h3>
+
+                       <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 ">
+                                <div class="items1">
+                                   <img src="{% static 'tshirt_.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="items1">
+                                    <img src="{% static 'pants_.jpg' %}" alt="">
+                                 </div>
+                            </div>  
+                            <div class="col-sm-6">
+                                <div class="items1">
+                                    <img src="{% static 'shirts_.jpg' %}" alt="">
+                                 </div>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="items1">
+                                    <img src="{% static 'pantsb_.jpg' %}" alt="">
+                                 </div>
+                            </div>
+                        </div>
+                       </div>
+                        
+                        
+                    </div>
+                  </div>
+                  
+                  <div class=" col-xs-4 col-sm-4 p-4">
+                      <div class="indexbox1 text-center">
+                          <h3>Earpods</h3>
+
+                          <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    <div class="items1">
+                                       <img src="{% static 'boat.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <div class="items1">
+                                        <img src="{% static 'boult.jpg' %}" alt="">
+                                     </div>
+                                </div>  
+                                <div class="col-sm-6">
+                                    <div class="items1">
+                                        <img src="{% static 'noise(1).jpg' %}" alt="">
+                                     </div>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <div class="items1">
+                                        <img src="{% static 'zebronics.jpg' %}" alt="">
+                                     </div>
+                                </div>
+                            </div>
+                           </div>
+
+                      </div>
+
+                  </div>
+                  
+
+                  <div class="col-xs-4  col-sm-4 p-4">
+                    <div class="indexbox1 text-center">
+                        <h3>Gym Equipments</h3>
+                         
+                        <div class="container">
+                          <div class="row">
+                              <div class="col-sm-6 ">
+                                  <div class="items1">
+                                     <img src="{% static 'gym1.jpg' %}" alt="">
+                                  </div>
+                              </div>
+                              <div class="col-sm-6 ">
+                                  <div class="items1">
+                                      <img src="{% static 'gym2.jpg' %}" alt="">
+                                   </div>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="items1">
+                                      <img src="{% static 'gym3.jpg' %}" alt="">
+                                   </div>
+                              </div>
+                              <div class="col-sm-6 ">
+                                  <div class="items1">
+                                      <img src="{% static 'gym4.jpg' %}" alt="">
+                                   </div>
+                              </div>
+                          </div>
+                         </div>
+                    </div>
+                  
+                </div>
+
+            </div>
+        </div>
+    </section> -->
+<!-- .........................................sec3....................................... -->
+ <section class="mt-5">
+     <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+           <div class="head-scroll" style="position: relative;"> 
+            <h5 class="fw-bold fs-2 ">Best Deal On Smartphone</h5>
+            <a href="/product" style="position: absolute; right: 0px; top: 0px; font-size: 23px;"> <i class="bi bi-arrow-right-circle-fill"></i></a>
+            </div>
+            <div class="scroll-container">
+                 {% for x in cat %}
+            <div class="col-12 col-sm-3">
+                <div class="catbox image-box">
+                    <a href="/product?pro={{x.id}}">
+                        <img src="/media/{{x.cat_image}}" alt="" width="100%">
+                        <p class="p_name"> 
+                            <a href=""><b class="text-uppercase">{{ x.cat_name }}</b></a>
+                         </p>
+                        <p class="p_price">
+                            <a href="">{{ x.cat_price}} Rs</a>
+                        </p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+ </section>
+<!-- <section class="cat">
+    <div class="container">
+        <div class="row">
+            {% for x in cat %}
+            <div class="col-3">
+                <div class="catbox">
+                    <a href="/product?pro={{x.id}}">
+                        <img src="/media/{{x.cat_image}}" alt="" width="100%">
+                        <p> {{ x.cat_name }} </p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section> -->
+ <!-- ......................................................sec4................................................ -->
+<section class="sec4">
+    <div class="container">
+        <div class="row">
+            <!-- Title -->
+            <div class="col-sm-12">
+                <div class="newproducts">
+                    <h2>New Products</h2>
+                </div>
+            </div>
+
+            <!-- OPPO Reno12 - Full Width -->
+            <div class="col-sm-12 mt-2">
+                <div class="sec4-inbox1" style="background-color: #eee;">
+                    <div class="sec4-product-heading">
+                        <h2>OPPO Reno12 <sup>5G</sup></h2>
+                    </div>
+                    <div class="sec4-img2">
+                        <img src="{% static 'index-img/reno12-2624x920.jpeg.thumb.webp' %}" class="product-image" alt="OPPO Reno12 5G">
+                    </div>
+                    <div class="sec4-inbox2-downbox">
+                        <p class="first-paragraph">AI Eraser 2.0 Powered by GenAI</p>
+                        <p class="second-paragraph">AI Studio to Create Your Digital Avatar</p>
+                        <div class="sec4-inbox2-downbox-link">
+                            <a href="#" class="green-div-link1 new-button--link">Learn more</a>
+                            <a href="#" class="green-div-link1">Buy now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next 4 Products in Two Columns (col-sm-6 each) -->
+            <!-- OPPO F27 Pro+ -->
+            <div class="col-sm-6 mt-3">
+                <div class="sec4-inbox2" style="background-color: #eee;">
+                    <div class="sec4-product-heading">
+                        <h2>OPPO F27 Pro+ <sup>5G</sup></h2>
+                    </div>
+                    <div class="sec4-img2">
+                        <img src="{% static 'index-img/appo f27 pro+5g.jpg'%}" alt="OPPO F27 Pro+">
+                    </div>
+                    <div class="sec4-inbox2-downbox">
+                        <p class="first-paragraph">Waterproof Rated IP69</p>
+                        <p class="second-paragraph">Damage-proof 360° Armour Body</p>
+                        <div class="sec4-inbox2-downbox-link">
+                            <a href="#" class="green-div-link1 new-button--link">Learn more</a>
+                            <a href="#" class="green-div-link1">Buy now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPPO A3 Pro -->
+            <div class="col-sm-6 mt-3">
+                <div class="sec4-inbox2" style="background-color: #eee;">
+                    <div class="sec4-product-heading">
+                        <h2>OPPO A3 Pro <sup>5G</sup></h2>
+                    </div>
+                    <div class="sec4-img2">
+                        <img src="{% static 'index-img/appo2.jpg'%}" alt="OPPO A3 Pro">
+                    </div>
+                    <div class="sec4-inbox2-downbox">
+                        <p class="first-paragraph">Damage-proof All-Round Armour Body</p>
+                        <p class="second-paragraph">45W SUPERVOOC<sub>TM</sub> Flash Charge</p>
+                        <div class="sec4-inbox2-downbox-link">
+                            <a href="#" class="green-div-link1 new-button--link">Learn more</a>
+                            <a href="#" class="green-div-link1">Buy now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPPO A3 -->
+            <div class="col-sm-6 mt-3">
+                <div class="sec4-inbox2" style="background-color: #eee;">
+                    <div class="sec4-product-heading">
+                        <h2>OPPO A3 <sup>5G</sup></h2>
+                    </div>
+                    <div class="sec4-img2">
+                        <img src="{% static 'index-img/appo3.jpg'%}" alt="OPPO A3">
+                    </div>
+                    <div class="sec4-inbox2-downbox">
+                        <p class="first-paragraph">Military-Grade Shock Resistance</p>
+                        <p class="second-paragraph">45W SUPERVOOC<sub>TM</sub> Flash Charge</p>
+                        <div class="sec4-inbox2-downbox-link">
+                            <a href="#" class="green-div-link1 new-button--link">Learn more</a>
+                            <a href="#" class="green-div-link1">Buy now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPPO A3X -->
+            <div class="col-sm-6 mt-3">
+                <div class="sec4-inbox2" style="background-color: #eee;">
+                    <div class="sec4-product-heading">
+                        <h2>OPPO A3X <sup>5G</sup></h2>
+                    </div>
+                    <div class="sec4-img2">
+                        <img src="{% static 'index-img/appo4.webp'%}" alt="OPPO A3X">
+                    </div>
+                    <div class="sec4-inbox2-downbox">
+                        <p class="first-paragraph">Military-Grade Shock Resistance</p>
+                        <p class="second-paragraph">45W SUPERVOOC<sub>TM</sub> Flash Charge</p>
+                        <div class="sec4-inbox2-downbox-link">
+                            <a href="#" class="green-div-link1 new-button--link">Learn more</a>
+                            <a href="#" class="green-div-link1">Buy now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End .row -->
+    </div> <!-- End .container -->
+</section>
+
+<!-- .........................................sec5.......................................... -->
+ <section class="sec5 mt-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h6 class="display-6 fw-bold">NEW OFFER <sup>1st</sup></h6>
+            </div>
+            <div class="col-12">
+                <div class="row g-3">
+                    <!-- First Offer Box -->
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                        <div class="sec5-inbox1 text-center">
+                            <img src="{% static 'index-img/exchange.webp' %}" class="img-fluid" alt="Exchange Program">
+                            <div class="ex-box">
+                                <h4>Exchange Program</h4>
+                                
+                                <div class="d-flex justify-content-around">
+                                    <p>Upgrade Now and Save Up to ₹49,000</p>
+                                <i class="bi bi-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second Offer Box -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <div class="sec5-inbox1 text-center">
+                            <img src="{% static 'index-img/offerm.webp' %}" class="img-fluid" alt="Gift's Offer">
+                            <div class="ex-box">
+                                <h4>Gift's Offer</h4>
+                               <div class="d-flex justify-content-around">
+                                <p>Upgrade Now and Save Up to ₹70,000</p>
+                                <i class="bi bi-arrow-right"></i>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Third Offer Box -->
+                    <div class="col-12 col-sm-6 col-md-12 col-lg-4  ">
+                        <div class="sec5-inbox1 text-center">
+                            <img src="{% static 'index-img/education.webp' %}" class="img-fluid" alt="Student Loan">
+                            <div class="ex-box">
+                                <h4>Student Loan</h4>
+                              <div class="d-flex justify-content-around">
+                                <p>Upgrade Now and Save Up to ₹149,000</p>
+                                <i class="bi bi-arrow-right"></i>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ </section>
+
+ <!-- ......................................................footer........................................................... -->
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                
+                <footer class="footer">
+                    <div class="footer-content">
+                        <div class="footer-section about">
+                            <h2>About Us</h2>
+                            <p>We offer the best deals on the latest mobile phones. Visit our store for exclusive offers!</p>
+                        </div>
+                        <div class="footer-section links">
+                            <h2>Quick Links</h2>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Products</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section links">
+                            <h2>Support</h2>
+                            <ul>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Service Center</a></li>
+                                <li><a href="#">Funtouch OS</a></li>
+                                <li><a href="#">System Update</a></li>
+                                <li><a href="#">Write to CEO</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section contact">
+                            <h2>Contact</h2>
+                            <p>Phone: +1 234 567 890</p>
+                            <p>Email: support@yourstore.com</p>
+                            <div class="socials">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2024 trenmart All rights reserved.</p>
+                    </div>
+                </footer>
+                
+
+            </div>
+        </div>
+  </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
+
+  
+    
+
+    {% endblock %}
