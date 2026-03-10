@@ -1,0 +1,16 @@
+{% extends 'masterpage.html' %}
+{% load static %}
+{% block title %}Payment Cancelled{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <i class="bi bi-x-circle-fill" style="font-size: 5rem; color: red;"></i>
+            <h2>Payment Cancelled</h2>
+            <p>{{ message|default:"No problem! You can try again anytime." }}</p>
+            <a href="{% url 'checkout' %}" class="btn btn-primary">Back to Checkout</a>
+            <a href="{% url 'index' %}" class="btn btn-secondary ms-2">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

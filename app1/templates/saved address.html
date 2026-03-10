@@ -1,0 +1,192 @@
+{% extends 'account0.html' %}
+{% load static %}
+{% block title %}personal{% endblock %}
+
+
+{% block content %}
+<style>
+  .inbox1 span{
+    color: rgb(20, 110, 161);
+    border: 1px solid rgb(20, 110, 161);
+    border-radius: 5px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }  
+  .inbox2{
+    padding: 10%;
+  }
+  .inbox2:hover{
+    box-shadow:0px 3px 5px ;
+  }
+  .edit-remove{
+    display: flex;
+    justify-content: space-between;
+  }
+  .edit-remove span a{
+    color: rgb(20, 110, 161);
+    /* border: 1px solid rgb(20, 110, 161); */
+    padding: 5px 15px;
+    text-decoration: none;
+  }
+  /* .......................popup........................ */
+  
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content h2 {
+    margin-top: 0;
+}
+
+.popup-content label {
+    display: block;
+    margin-top: 10px;
+}
+
+.popup-content input {
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.popup-content button:hover {
+    background-color: #0056b3;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="inbox1 d-flex justify-content-around">
+                <h4><b>Saved Address</b></h4>
+                <span  >
+                    <a style="text-decoration: none;" id="openFormBtn"><h6><b>+ ADD NEW ADDRESS</b></h6></a>
+                </span>
+            </div>
+             <!-- Popup form -->
+                            
+             <div id="popupForm" class="popup">
+                 <div class="popup-content">
+                     <span class="close-btn" id="closeFormBtn">&times;</span>
+                     
+             <form id="addressForm" action="/savedaddress" method="post">
+                {% csrf_token %}
+                     <h2 class="mt-0">Delivery Address</h2>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                
+                <label for="zipCode">Zip Code:</label>
+                <input type="text" id="zipCode" name="zipCode" required>
+                
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+                
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+                
+                <button class="" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+        </div>
+
+
+        <div class="col-sm-6">
+            {% for x in address %}
+            <div class="inbox2 pt-4">
+            <div class="pb-3">Name:{{ x.name }}</div>
+                <!-- <div>area</div>{{adrs}} -->
+                <div>pincode:{{x.pincode}}</div>
+                <div>district:{{ x.district}}</div>
+                <div>state:{{ x.state }}</div>
+                
+                <div class="pt-3"> {{x.mobile}}</div>
+                <br>
+                <div class="edit-remove">
+                    <span><b><a href="">edit</a></b></span>
+                    <span><b><a href="">Remove</a></b></span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+// Get elements
+const openFormBtn = document.getElementById('openFormBtn');
+const popupForm = document.getElementById('popupForm');
+const closeFormBtn = document.getElementById('closeFormBtn');
+const addressForm = document.getElementById('addressForm');
+
+// Open popup
+openFormBtn.addEventListener('click', () => {
+    popupForm.style.display = 'flex';
+});
+
+// Close popup
+closeFormBtn.addEventListener('click', () => {
+    popupForm.style.display = 'none';
+});
+
+// Close popup when clicking outside the form
+window.addEventListener('click', (event) => {
+    if (event.target === popupForm) {
+        popupForm.style.display = 'none';
+    }
+});
+
+// Prevent form submission and keep the popup open
+addressForm.addEventListener('submit', (event) => {
+    window.location.reload(); // Reload the page
+    alert('Form submitted successfully!'); // Perform an action
+});
+
+
+</script>
+
+{% endblock %}

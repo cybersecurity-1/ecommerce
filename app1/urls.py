@@ -1,0 +1,35 @@
+from django.urls import path
+from .import views
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('register', views.register, name='register'),
+    path('about', views.about, name='about'),
+    path('login', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
+    path('account0', views.account0, name='account0'),
+    path('addproduct', views.addproduct, name='addproduct'),
+    path('product', views.product, name='product'),
+    path('addtocart/<int:id>', views.addtocart, name='addtocart'),
+    path('cart', views.cart, name='cart'),
+
+    path('checkout', views.checkout, name='checkout'),
+    path('success/', views.success, name='success'),  # New: Stripe success
+    path('cancel/', views.cancel, name='cancel'),    # New: Stripe cancel
+
+    # New Stripe paths
+    path('config/', views.stripe_config, name='stripe_config'),  # For public key
+    path('create-checkout-session/', views.create_checkout_session, name='create_checkout_session'),
+
+    path('confirmorder', views.confirmorder, name='confirmorder'),
+    path('myorders', views.myorders, name='myorders'),
+    path('cart/delete/<int:id>/', views.delete_from_cart, name='delete_from_cart'),
+    path('add_to_wishlist/<int:id>', views.add_to_wishlist, name='add_to_wishlist'),
+    path('wishlist', views.wishlist, name='wishlist'),
+    path('personal', views.personal, name='personal'),
+    path('wallet', views.wallet, name='wallet'),
+    path('savedaddress', views.savedaddress, name='savedaddress'),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,36 @@
+{% extends 'account0.html' %}
+{% load static %}
+{% block title %}personal{% endblock %}
+
+
+{% block content %}
+    <style>
+        .wallet-combo{
+  background-color: rgba(245, 132, 161, 0.822);
+}
+.add-cash{
+  background-color: #ffffffde;
+  padding: 10px;
+  border-radius:5px ;
+}
+    </style>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="wallet-combo d-flex justify-content-around">
+             <div class="b-combo pt-2">
+              
+              <h1 style="color: white;"><b>$0</b></h1>
+              <p style="color: white;">Current wallet balance</p>
+             </div>
+             <div class="add-combo">
+              <div class="add-money pt-4">
+                <span class="add-cash fw-bold">+ Add Money to Wallet</span>
+              </div>
+             </div>
+            </div>
+        </div>
+        </div>
+       </div>
+       {% endblock %}
