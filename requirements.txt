@@ -1,8 +1,8 @@
 dj-database-url==3.0.1
-
 Django==6.0.3
-
 stripe==14.4.1
 gunicorn
 psycopg2-binary
 whitenoise
+cloudinary
+django-cloudinary-storage
