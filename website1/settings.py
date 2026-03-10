@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-a%6k-5izvp2x8xyknp-xkfbk2%ari&wc5^slzz8oo+=e-6cl7v')  # override in Render env vars
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['your-app-name.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ecommerce-1-g8wt.onrender.com', 'localhost', '127.0.0.1']
 
 # --- Apps ---
 INSTALLED_APPS = [
