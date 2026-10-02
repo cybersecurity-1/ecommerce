@@ -113,7 +113,9 @@ USE_TZ = True
 
 # --- Static & Media Files ---
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static'] if (BASE_DIR / 'static').exists() else []
+STATICFILES_DIRS = [
+    path for path in (BASE_DIR / 'static', BASE_DIR / 'media') if path.exists()
+]
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # ← added (needed for collectstatic)
 
 MEDIA_ROOT = BASE_DIR / 'media'

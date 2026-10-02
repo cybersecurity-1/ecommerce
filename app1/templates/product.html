@@ -24,7 +24,11 @@ product
     {% for x in products %}
     <!-- <div class="col-sm-4">
         <div id="inbox10">
+            {% if x.pro_image.url %}
             <img src="{{ x.pro_image.url }}" alt="{{ x.pro_name }}" width="200px" height="250px">
+            {% else %}
+            <img src="{% static x.pro_image.name %}" alt="{{ x.pro_name }}" width="200px" height="250px">
+            {% endif %}
             <div class="span1">
                 <span> {{x.pro_name}}</span>
             </div>
@@ -37,7 +41,11 @@ product
     <div class="col-sm-4 mb-5">
 
       <div class="card p-3" >
+        {% if x.pro_image.url %}
         <img class="card-img-top" src="{{ x.pro_image.url }}" alt="{{ x.pro_name }}" >
+        {% else %}
+        <img class="card-img-top" src="{% static x.pro_image.name %}" alt="{{ x.pro_name }}" >
+        {% endif %}
         <div class="span1 mt-2">
           <span> {{x.pro_name}}</span>
         </div>

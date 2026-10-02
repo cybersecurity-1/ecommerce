@@ -35,7 +35,11 @@
             <div class="col-sm-3">
 
               <div class="inbox1">
+                {% if x.cart_image.url %}
                 <img class="card-img-top" src="{{ x.cart_image.url }}" alt="{{x.cart_name}}" height="100px">
+                {% else %}
+                <img class="card-img-top" src="{% static x.cart_image.name %}" alt="{{x.cart_name}}" height="100px">
+                {% endif %}
               </div>
             </div>
             <div class="col-sm-3">
@@ -110,7 +114,11 @@
                
                 <div class="me-lg-5">
                   <div class="d-flex">
+                    {% if x.cart_image.url %}
                     <img  src="{{ x.cart_image.url }}" alt="{{x.cart_name}}" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                    {% else %}
+                    <img  src="{% static x.cart_image.name %}" alt="{{x.cart_name}}" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                    {% endif %}
                     <div class="">
                       <a href="#" class="nav-link">Winter jacket for men and lady</a>
                       <p class="text-muted">Yellow, Jeans</p>

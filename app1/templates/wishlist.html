@@ -108,7 +108,11 @@
                             <div class="row align-items-center">
                                 <!-- Product Image -->
                                 <div class="col-12 col-md-2 text-center text-md-start mb-3 mb-md-0">
+                                    {% if x.wishlist_image.url %}
                                     <img src="{{ x.wishlist_image.url }}" alt="{{ x.wishlist_name }}" class="product-img">
+                                    {% else %}
+                                    <img src="{% static x.wishlist_image.name %}" alt="{{ x.wishlist_name }}" class="product-img">
+                                    {% endif %}
                                 </div>
 
                                 <!-- Product Details -->

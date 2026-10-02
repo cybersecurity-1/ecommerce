@@ -11,7 +11,11 @@
             <div class="row my-2" style="background-color: rgb(255,255,255,0.2); border: 1px solid grey; padding: 5px;">
             <div class="col-sm-4">
                 <div class="inbox1" >
+                    {% if x.order_proimage.url %}
                     <img src="{{ x.order_proimage.url }}" alt="{{ x.order_proname }}" height="100px">
+                    {% else %}
+                    <img src="{% static x.order_proimage.name %}" alt="{{ x.order_proname }}" height="100px">
+                    {% endif %}
                 </div>
             </div>
             <div class="col-sm-4">
