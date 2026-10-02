@@ -1,6 +1,7 @@
 from django import template
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
+from django.core.files.storage import default_storage
 from django.templatetags.static import static
 from pathlib import Path
 
@@ -13,7 +14,11 @@ def image_url(image_field):
     if not image_field:
         return ""
 
-    name = getattr(image_field, "name", "")
+    name = getattr(
+        image_field,
+        "name",
+        image_field if isinstance(image_field, str) else "",
+    )
     if name:
         bundled_path = Path(settings.BASE_DIR) / "media" / name
         if bundled_path.is_file():
@@ -22,7 +27,23 @@ def image_url(image_field):
             except ValueError:
                 return static(name)
 
+    if isinstance(image_field, str):
+        try:
+            return default_storage.url(name)
+        except Exception:
+            return ""
+
     try:
-        return image_field.url
+        url = image_field.url
     except Exception:
-        return static(name) if name else ""
+        url = ""
+
+    if url:
+        return url
+
+    if name:
+        try:
+            return static(name)
+        except ValueError:
+            return ""
+    return ""

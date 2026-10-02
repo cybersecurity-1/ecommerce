@@ -205,13 +205,15 @@ def product(request):
           products = Product.objects.filter(pro_cats = id)
       else:
         products=Product.objects.all().values()
-      user = request.session['usersession']
+      user = request.session.get('usersession')
       if 'del' in request.GET:
+          if not user:
+              return HttpResponseRedirect('/login')
           id = request.GET['del']
           delwish = Wishlist.objects.filter(wishlist_proid = id,wishlist_user = user)[0]
           delwish.delete()
           return HttpResponseRedirect("/product")
-      wish = Wishlist.objects.filter(wishlist_user = user)
+      wish = Wishlist.objects.filter(wishlist_user = user) if user else []
       # Create a list to store all product IDs
       pid_list = [x.wishlist_proid for x in wish]  # List comprehension to gather all product IDs
 
@@ -572,7 +574,9 @@ def confirmorder(request):
     return HttpResponse(template.render({},request))  
     
 def myorders(request):
-    user = request.session["usersession"]
+    user = request.session.get("usersession")
+    if not user:
+        return HttpResponseRedirect('/login')
     orders = Order.objects.filter(order_prouser=user, order_status=1)
     
     
