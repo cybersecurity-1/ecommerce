@@ -175,7 +175,7 @@ HOME PAGE
                     <div class="col-12 col-sm-3">
                         <div class="catbox image-box">
                             <a href="/product?pro={{x.id}}">
-                                <img src="/media/{{x.cat_image}}" alt="" width="100%">
+                                <img src="{{ x.cat_image.url }}" alt="{{ x.cat_name }}" width="100%">
                                 <p class="p_name">
                                     <a href=""><b class="text-uppercase">{{ x.cat_name }}</b></a>
                                 </p>
@@ -200,7 +200,7 @@ HOME PAGE
             <div class="col-3">
                 <div class="catbox">
                     <a href="/product?pro={{x.id}}">
-                        <img src="/media/{{x.cat_image}}" alt="" width="100%">
+                        <img src="{{ x.cat_image.url }}" alt="{{ x.cat_name }}" width="100%">
                         <p> {{ x.cat_name }} </p>
                     </a>
                 </div>

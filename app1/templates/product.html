@@ -24,7 +24,7 @@ product
     {% for x in products %}
     <!-- <div class="col-sm-4">
         <div id="inbox10">
-            <img src="/media/{{x.pro_image}}" alt="apple" width="200px" height="250px">
+            <img src="{{ x.pro_image.url }}" alt="{{ x.pro_name }}" width="200px" height="250px">
             <div class="span1">
                 <span> {{x.pro_name}}</span>
             </div>
@@ -37,7 +37,7 @@ product
     <div class="col-sm-4 mb-5">
 
       <div class="card p-3" >
-        <img class="card-img-top" src="/media/{{x.pro_image}}" alt="Card image" >
+        <img class="card-img-top" src="{{ x.pro_image.url }}" alt="{{ x.pro_name }}" >
         <div class="span1 mt-2">
           <span> {{x.pro_name}}</span>
         </div>

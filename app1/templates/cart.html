@@ -35,7 +35,7 @@
             <div class="col-sm-3">
 
               <div class="inbox1">
-                <img class="card-img-top" src="/media/{{x.cart_image}}" alt="{{x.cart_name}}" height="100px">
+                <img class="card-img-top" src="{{ x.cart_image.url }}" alt="{{x.cart_name}}" height="100px">
               </div>
             </div>
             <div class="col-sm-3">
@@ -110,7 +110,7 @@
                
                 <div class="me-lg-5">
                   <div class="d-flex">
-                    <img  src="/media/{{x.cart_image}}" alt="{{x.cart_name}}" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                    <img  src="{{ x.cart_image.url }}" alt="{{x.cart_name}}" class="border rounded me-3" style="width: 96px; height: 96px;" />
                     <div class="">
                       <a href="#" class="nav-link">Winter jacket for men and lady</a>
                       <p class="text-muted">Yellow, Jeans</p>
