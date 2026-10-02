@@ -7,10 +7,27 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- Security ---
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-a%6k-5izvp2x8xyknp-xkfbk2%ari&wc5^slzz8oo+=e-6cl7v')  # override in Render env vars
-DEBUG = True
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-local-development-only',
+)
+DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['ecommerce-1-g8wt.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get(
+        'ALLOWED_HOSTS', '.onrender.com,localhost,127.0.0.1'
+    ).split(',')
+    if host.strip()
+]
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get(
+        'CSRF_TRUSTED_ORIGINS', 'https://*.onrender.com'
+    ).split(',')
+    if origin.strip()
+]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # --- Apps ---
 INSTALLED_APPS = [
@@ -89,7 +106,7 @@ USE_TZ = True
 
 # --- Static & Media Files ---
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'static'] if (BASE_DIR / 'static').exists() else []
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # ← added (needed for collectstatic)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # ← added
 
