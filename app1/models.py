@@ -7,7 +7,7 @@ class Register(models.Model):
             reg_cemail = models.TextField(max_length=255,unique=True)
             reg_cphone = models.CharField(max_length=255)
             reg_username = models.CharField(max_length=255)
-            reg_psw = models.CharField(max_length=2)
+            reg_psw = models.CharField(max_length=128)
 
             def __str__(self):
                 return self.reg_cname

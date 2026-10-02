@@ -4,6 +4,7 @@ services:
     env: python
     region: ohio
     plan: free
+    rootDir: djangostack/project1/website1
     buildCommand: "./build.sh"
     startCommand: gunicorn website1.wsgi:application --bind 0.0.0.0:$PORT
     envVars:

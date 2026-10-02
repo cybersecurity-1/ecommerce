@@ -27,7 +27,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'rj5MiHcuYIE3tQVqZo8CyKP7j0-j2yUKizNLb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '.onrender.com']
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+env_allowed = os.environ.get('ALLOWED_HOSTS')
+if env_allowed:
+    ALLOWED_HOSTS.extend([h.strip() for h in env_allowed.split(',') if h.strip()])
+
 
 # Application definition
 
@@ -82,7 +89,8 @@ WSGI_APPLICATION = 'website1.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
-        conn_max_age=600
+        conn_max_age=600,
+        ssl_require=not DEBUG
     )
 }
 
@@ -124,7 +132,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 MEDIA_ROOT = BASE_DIR /'media'
 MEDIA_URL = '/media/'
@@ -138,6 +154,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Respect X-Forwarded-Proto header set by reverse proxies (Render sets this)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+# CSRF Trusted Origins for HTTPS
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.onrender.com',
+]
+if RENDER_EXTERNAL_HOSTNAME:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
+env_csrf = os.environ.get('CSRF_TRUSTED_ORIGINS')
+if env_csrf:
+    CSRF_TRUSTED_ORIGINS.extend([origin.strip() for origin in env_csrf.split(',') if origin.strip()])
+
 # Ensure cookies are only sent over HTTPS when not in DEBUG
 if not DEBUG:
     SESSION_COOKIE_SECURE = True
@@ -147,6 +173,7 @@ else:
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
     SECURE_SSL_REDIRECT = False
+
 
 # Keep default file storage local by default. For production media persistence,
 # configure S3 and set `DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`
