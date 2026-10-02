@@ -1,6 +1,6 @@
 {% extends 'masterpage.html' %}
 
-{% load static %}
+{% load static image_urls %}
 
 {% block title %}
 HOME PAGE
@@ -175,11 +175,7 @@ HOME PAGE
                     <div class="col-12 col-sm-3">
                         <div class="catbox image-box">
                             <a href="/product?pro={{x.id}}">
-                                {% if x.cat_image.url %}
-                                <img src="{{ x.cat_image.url }}" alt="{{ x.cat_name }}" width="100%">
-                                {% else %}
-                                <img src="{% static x.cat_image.name %}" alt="{{ x.cat_name }}" width="100%">
-                                {% endif %}
+                                <img src="{{ x.cat_image|image_url }}" alt="{{ x.cat_name }}" width="100%">
                                 <p class="p_name">
                                     <a href=""><b class="text-uppercase">{{ x.cat_name }}</b></a>
                                 </p>
@@ -204,11 +200,7 @@ HOME PAGE
             <div class="col-3">
                 <div class="catbox">
                     <a href="/product?pro={{x.id}}">
-                        {% if x.cat_image.url %}
-                        <img src="{{ x.cat_image.url }}" alt="{{ x.cat_name }}" width="100%">
-                        {% else %}
-                        <img src="{% static x.cat_image.name %}" alt="{{ x.cat_name }}" width="100%">
-                        {% endif %}
+                        <img src="{{ x.cat_image|image_url }}" alt="{{ x.cat_name }}" width="100%">
                         <p> {{ x.cat_name }} </p>
                     </a>
                 </div>
