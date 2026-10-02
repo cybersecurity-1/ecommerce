@@ -27,13 +27,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'rj5MiHcuYIE3tQVqZo8CyKP7j0-j2yUKizNLb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '.onrender.com']
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-env_allowed = os.environ.get('ALLOWED_HOSTS')
-if env_allowed:
-    ALLOWED_HOSTS.extend([h.strip() for h in env_allowed.split(',') if h.strip()])
+ALLOWED_HOSTS = ['*']
+USE_X_FORWARDED_HOST = True
+
 
 
 # Application definition
@@ -157,9 +153,14 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # CSRF Trusted Origins for HTTPS
 CSRF_TRUSTED_ORIGINS = [
     'https://*.onrender.com',
+    'http://*.onrender.com',
 ]
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
-    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
+    CSRF_TRUSTED_ORIGINS.extend([
+        f'https://{RENDER_EXTERNAL_HOSTNAME}',
+        f'http://{RENDER_EXTERNAL_HOSTNAME}',
+    ])
 env_csrf = os.environ.get('CSRF_TRUSTED_ORIGINS')
 if env_csrf:
     CSRF_TRUSTED_ORIGINS.extend([origin.strip() for origin in env_csrf.split(',') if origin.strip()])
